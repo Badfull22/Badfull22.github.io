@@ -1,49 +1,50 @@
-// Generate random ID with format aaaaa-xxxxx
-function generateRandomId() {
-  const letters = "abcdefghijklmnopqrstuvwxyz"
+// Generador de ID personalizado
+function generateNewId() {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   const numbers = "0123456789"
 
   let letterPart = ""
   let numberPart = ""
 
-  // Generate 5 random letters
+  // Generar 5 letras aleatorias
   for (let i = 0; i < 5; i++) {
     letterPart += letters.charAt(Math.floor(Math.random() * letters.length))
   }
 
-  // Generate 5 random numbers
+  // Generar 5 números aleatorios
   for (let i = 0; i < 5; i++) {
     numberPart += numbers.charAt(Math.floor(Math.random() * numbers.length))
   }
 
-  return `${letterPart}-${numberPart}`
-}
+  const newId = letterPart + "-" + numberPart
+  document.getElementById("user-id").textContent = newId
 
-// Update ID display
-function updateIdDisplay() {
-  const idDisplay = document.getElementById("userIdDisplay")
-  const newId = generateRandomId()
-
-  // Add animation effect
-  idDisplay.style.transform = "scale(0.8)"
-  idDisplay.style.opacity = "0.5"
-
+  // Animación de cambio
+  const idDisplay = document.getElementById("user-id")
+  idDisplay.style.transform = "scale(1.2)"
   setTimeout(() => {
-    idDisplay.textContent = newId
     idDisplay.style.transform = "scale(1)"
-    idDisplay.style.opacity = "1"
-  }, 150)
+  }, 200)
 }
 
-// Initialize with random ID on page load
-document.addEventListener("DOMContentLoaded", () => {
-  updateIdDisplay()
+// Navegación móvil
+const hamburger = document.getElementById("hamburger")
+const navMenu = document.getElementById("nav-menu")
 
-  // Add click event to generate button
-  document.getElementById("generateIdBtn").addEventListener("click", updateIdDisplay)
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active")
+  navMenu.classList.toggle("active")
 })
 
-// Smooth scrolling for navigation links
+// Cerrar menú al hacer clic en un enlace
+document.querySelectorAll(".nav-link").forEach((n) =>
+  n.addEventListener("click", () => {
+    hamburger.classList.remove("active")
+    navMenu.classList.remove("active")
+  }),
+)
+
+// Scroll suave
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault()
@@ -57,95 +58,76 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   })
 })
 
-// Form submission handler
-document.querySelector(".join-form").addEventListener("submit", function (e) {
-  e.preventDefault()
-
-  // Get form data
-  const formData = new FormData(this)
-  const data = Object.fromEntries(formData)
-
-  // Simple validation
-  if (!data.nombre || !data.telefono || !data.habilidad || !data.descripcion) {
-    showNotification("Por favor, completa todos los campos.", "error")
-    return
+// Efecto navbar al hacer scroll
+window.addEventListener("scroll", () => {
+  const navbar = document.getElementById("navbar")
+  if (window.scrollY > 100) {
+    navbar.classList.add("scrolled")
+  } else {
+    navbar.classList.remove("scrolled")
   }
-
-  // Simulate form submission
-  showNotification("¡Formulario enviado exitosamente! Te contactaremos pronto.", "success")
-  this.reset()
 })
 
-// Notification system
-function showNotification(message, type = "info") {
-  const notification = document.createElement("div")
-  notification.className = `notification notification-${type}`
-  notification.textContent = message
+// Formulario de crew
+function toggleForm() {
+  const formOverlay = document.getElementById("form-overlay")
+  formOverlay.classList.toggle("active")
 
-  // Style the notification
-  Object.assign(notification.style, {
-    position: "fixed",
-    top: "100px",
-    right: "20px",
-    padding: "1rem 1.5rem",
-    borderRadius: "12px",
-    color: "white",
-    fontWeight: "500",
-    zIndex: "10000",
-    transform: "translateX(100%)",
-    transition: "transform 0.3s ease",
-    maxWidth: "300px",
-    boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
-  })
-
-  // Set background color based on type
-  if (type === "success") {
-    notification.style.background = "linear-gradient(135deg, #10b981, #059669)"
-  } else if (type === "error") {
-    notification.style.background = "linear-gradient(135deg, #ef4444, #dc2626)"
+  if (formOverlay.classList.contains("active")) {
+    document.body.style.overflow = "hidden"
   } else {
-    notification.style.background = "linear-gradient(135deg, #6366f1, #4f46e5)"
+    document.body.style.overflow = "auto"
   }
-
-  document.body.appendChild(notification)
-
-  // Animate in
-  setTimeout(() => {
-    notification.style.transform = "translateX(0)"
-  }, 100)
-
-  // Remove after 4 seconds
-  setTimeout(() => {
-    notification.style.transform = "translateX(100%)"
-    setTimeout(() => {
-      document.body.removeChild(notification)
-    }, 300)
-  }, 4000)
 }
 
-// Active navigation link based on scroll position
-window.addEventListener("scroll", () => {
-  const sections = document.querySelectorAll("section[id]")
-  const navLinks = document.querySelectorAll(".nav-link")
-
-  let current = ""
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 100
-    const sectionHeight = section.clientHeight
-    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id")
+// Cerrar formulario con ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const formOverlay = document.getElementById("form-overlay")
+    if (formOverlay.classList.contains("active")) {
+      toggleForm()
     }
-  })
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active")
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active")
-    }
-  })
+  }
 })
 
-// Scroll animations
+// Manejar envío del formulario
+document.getElementById("crew-form").addEventListener("submit", (e) => {
+  e.preventDefault()
+
+  const formData = new FormData(e.target)
+  const data = {
+    nombre: formData.get("nombre"),
+    telefono: formData.get("telefono"),
+    habilidad: formData.get("habilidad"),
+  }
+
+  // Simular envío
+  alert("¡Solicitud enviada! Te contactaremos pronto para unirte a L.P.D.F")
+  toggleForm()
+  e.target.reset()
+})
+
+// Crear partículas animadas
+function createParticles() {
+  const particlesContainer = document.getElementById("particles")
+  const particleCount = 50
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement("div")
+    particle.className = "particle"
+    particle.style.left = Math.random() * 100 + "%"
+    particle.style.animationDelay = Math.random() * 6 + "s"
+    particle.style.animationDuration = Math.random() * 3 + 3 + "s"
+
+    // Colores aleatorios
+    const colors = ["#ff6b35", "#00d4ff", "#ff0080"]
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)]
+
+    particlesContainer.appendChild(particle)
+  }
+}
+
+// Animaciones de entrada al hacer scroll
 const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px 0px -50px 0px",
@@ -154,36 +136,64 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add("visible")
+      entry.target.style.opacity = "1"
+      entry.target.style.transform = "translateY(0)"
     }
   })
 }, observerOptions)
 
-// Observe elements for animation
+// Observar elementos para animaciones
 document.addEventListener("DOMContentLoaded", () => {
-  const animateElements = document.querySelectorAll(".form-container, .id-card, .coming-soon, .hero-image-placeholder")
-  animateElements.forEach((el) => {
-    el.classList.add("animate-on-scroll")
+  // Generar ID inicial
+  generateNewId()
+
+  // Crear partículas
+  createParticles()
+
+  // Configurar animaciones de scroll
+  const animatedElements = document.querySelectorAll(".tag-card, .product-card, .crew-content")
+  animatedElements.forEach((el) => {
+    el.style.opacity = "0"
+    el.style.transform = "translateY(50px)"
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease"
     observer.observe(el)
   })
 })
 
-// Parallax effect for hero background
+// Efecto parallax sutil
 window.addEventListener("scroll", () => {
   const scrolled = window.pageYOffset
-  const heroBackground = document.querySelector(".hero-background")
-  if (heroBackground) {
-    heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`
-  }
+  const parallaxElements = document.querySelectorAll(".hero-background")
+
+  parallaxElements.forEach((element) => {
+    const speed = 0.5
+    element.style.transform = `translateY(${scrolled * speed}px)`
+  })
 })
 
-// Add hover effects to form inputs
-document.querySelectorAll(".form-group input, .form-group textarea").forEach((input) => {
-  input.addEventListener("focus", function () {
-    this.parentElement.style.transform = "translateY(-2px)"
+// Efecto de typing para el título (opcional)
+function typeWriter(element, text, speed = 100) {
+  let i = 0
+  element.innerHTML = ""
+
+  function type() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i)
+      i++
+      setTimeout(type, speed)
+    }
+  }
+
+  type()
+}
+
+// Efectos de hover mejorados
+document.querySelectorAll(".tag-card, .product-card").forEach((card) => {
+  card.addEventListener("mouseenter", function () {
+    this.style.transform = "translateY(-10px) scale(1.02)"
   })
 
-  input.addEventListener("blur", function () {
-    this.parentElement.style.transform = "translateY(0)"
+  card.addEventListener("mouseleave", function () {
+    this.style.transform = "translateY(0) scale(1)"
   })
 })

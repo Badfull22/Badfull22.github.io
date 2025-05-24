@@ -5,141 +5,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Badfull: Original</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
+    <!-- Navegación -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-left">
-                <a href="#inicio" class="nav-link">inicio</a>
-                <a href="#galeria" class="nav-link">galería</a>
-                <a href="#tags" class="nav-link">TAGS</a>
-                <a href="#tienda" class="nav-link">Tienda/Merch</a>
+            <div class="nav-logo">
+                <span class="logo-text">BADFULL</span>
             </div>
-            <div class="nav-right">
-                <div class="user-id-container">
-                    <span class="user-id-label">tu id:</span>
-                    <span class="user-id-value" id="userIdDisplay">aaaaa-xxxxx</span>
-                    <button class="generate-id-btn" id="generateIdBtn">🎲</button>
-                </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#inicio" class="nav-link">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tags" class="nav-link">TAGS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tienda" class="nav-link">TIENDA</a>
+                </li>
+                <li class="nav-item">
+                    <div class="id-generator">
+                        <span class="id-label">TU ID:</span>
+                        <span class="id-display" id="user-id">ABCDE-12345</span>
+                        <button class="id-refresh" onclick="generateNewId()">🔄</button>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <main class="main-content">
-        <section id="inicio" class="hero-section">
-            <div class="hero-background"></div>
-            <div class="content-container">
-                <div class="left-content">
-                    <h1 class="hero-title">
-                        <span class="title-main">Badfull:</span>
-                        <span class="title-accent">Original</span>
-                    </h1>
-                    <p class="description">Descripción sobre Badfull</p>
-                    <p class="photo-note">Foto de algún tag</p>
-                    <div class="hero-image-placeholder">
-                        <div class="image-icon">🎨</div>
-                        <span>Imagen del tag</span>
+    <!-- Partículas de fondo -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-background">
+            <div class="gradient-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">BADFULL:</span>
+                <span class="title-line highlight">ORIGINAL</span>
+            </h1>
+            <p class="hero-description">
+                Hola, soy <strong>Badfull</strong>, una persona que está surgiendo por estas zonas, 
+                escribiendo <span class="highlight-text">TAGS</span>, pintando y demás. 
+                Mi mayor objetivo es ser reconocido, estar en todos lados y que la gente 
+                me considere un buen ejemplar.
+            </p>
+            <div class="hero-image">
+                <img src="/placeholder.svg?height=400&width=600" alt="Graffiti de Badfull" class="graffiti-image">
+                <div class="image-glow"></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Sección TAGS -->
+    <section id="tags" class="tags-section">
+        <div class="container">
+            <h2 class="section-title">MIS TAGS</h2>
+            <div class="tags-grid">
+                <div class="tag-card">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Tag 1" class="tag-image">
+                    <div class="tag-overlay">
+                        <h3>STREET ART</h3>
                     </div>
                 </div>
-                
-                <div class="right-content">
-                    <div class="id-card">
-                        <div class="arrow-pointer">↗</div>
-                        <div class="id-explanation">
-                            <h3>Formato de ID</h3>
-                            <div class="id-example">
-                                <span class="id-part letters">aaaaa</span>
-                                <span class="id-separator">-</span>
-                                <span class="id-part numbers">xxxxx</span>
-                            </div>
-                            <p class="id-description">
-                                Las <span class="highlight-letters">"a"</span> son letras y las <span class="highlight-numbers">"x"</span> son números
-                            </p>
-                        </div>
+                <div class="tag-card">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Tag 2" class="tag-image">
+                    <div class="tag-overlay">
+                        <h3>URBAN STYLE</h3>
+                    </div>
+                </div>
+                <div class="tag-card">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Tag 3" class="tag-image">
+                    <div class="tag-overlay">
+                        <h3>WILD STYLE</h3>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="crew-section" class="crew-section">
-            <div class="content-container">
-                <div class="section-header">
-                    <h2>L.P.D.F. Crew/Clan</h2>
-                    <p class="crew-description">Descripción sobre la crew/clan</p>
-                </div>
-                
-                <div class="form-container">
-                    <div class="form-header">
-                        <h3>¿Quieres unirte?</h3>
-                        <p>Completa este formulario:</p>
+    <!-- Sección Crew -->
+    <section id="crew" class="crew-section">
+        <div class="container">
+            <div class="crew-content">
+                <h2 class="crew-title">L.P.D.F</h2>
+                <p class="crew-subtitle">(Los Pibes Del Fondo)</p>
+                <p class="crew-description">
+                    LPDF es una crew creada para este ámbito, para pintar, 
+                    para <span class="highlight-text">ranchear</span> (pasarla bien) y para josear.
+                </p>
+                <button class="join-btn" onclick="toggleForm()">
+                    ÚNETE A LA CREW
+                </button>
+            </div>
+        </div>
+        
+        <!-- Formulario de inscripción -->
+        <div class="form-overlay" id="form-overlay">
+            <div class="form-container">
+                <button class="close-btn" onclick="toggleForm()">×</button>
+                <h3 class="form-title">ÚNETE A L.P.D.F</h3>
+                <form class="crew-form" id="crew-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
                     </div>
-                    
-                    <form class="join-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Nombre completo</label>
-                                <input type="text" name="nombre" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Número de teléfono</label>
-                                <input type="tel" name="telefono" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Habilidad principal</label>
-                            <input type="text" name="habilidad" placeholder="Ej: Graffiti, Diseño, Fotografía..." required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Descripción sobre ti</label>
-                            <textarea name="descripcion" rows="4" placeholder="Cuéntanos sobre tu experiencia y por qué quieres unirte..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <span>Enviar solicitud</span>
-                            <div class="btn-shine"></div>
-                        </button>
-                    </form>
+                    <div class="form-group">
+                        <label for="telefono">Número de Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="habilidad">Tu Habilidad en Graffiti</label>
+                        <textarea id="habilidad" name="habilidad" placeholder="Describe qué aportas o sabes hacer..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">ENVIAR SOLICITUD</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Tienda -->
+    <section id="tienda" class="shop-section">
+        <div class="container">
+            <h2 class="section-title">TIENDA</h2>
+            <div class="shop-grid">
+                <div class="product-card">
+                    <img src="/placeholder.svg?height=250&width=250" alt="Producto 1" class="product-image">
+                    <h3>SPRAY PREMIUM</h3>
+                    <p class="price">$15.99</p>
+                </div>
+                <div class="product-card">
+                    <img src="/placeholder.svg?height=250&width=250" alt="Producto 2" class="product-image">
+                    <h3>MARKERS SET</h3>
+                    <p class="price">$24.99</p>
+                </div>
+                <div class="product-card">
+                    <img src="/placeholder.svg?height=250&width=250" alt="Producto 3" class="product-image">
+                    <h3>STICKERS PACK</h3>
+                    <p class="price">$9.99</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="galeria" class="section">
-            <div class="content-container">
-                <h2>Galería</h2>
-                <div class="coming-soon">
-                    <div class="coming-soon-icon">🖼️</div>
-                    <p>Próximamente...</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="tags" class="section">
-            <div class="content-container">
-                <h2>TAGS</h2>
-                <div class="coming-soon">
-                    <div class="coming-soon-icon">🏷️</div>
-                    <p>Próximamente...</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="tienda" class="section">
-            <div class="content-container">
-                <h2>Tienda/Merch</h2>
-                <div class="coming-soon">
-                    <div class="coming-soon-icon">🛍️</div>
-                    <p>Próximamente...</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
+    <!-- Footer -->
     <footer class="footer">
-        <div class="content-container">
-            <p>&copy; 2024 Badfull: Original. Todos los derechos reservados.</p>
+        <div class="container">
+            <p>&copy; 2024 Badfull Original. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">IG</a>
+                <a href="#" class="social-link">TW</a>
+                <a href="#" class="social-link">YT</a>
+            </div>
         </div>
     </footer>
 
