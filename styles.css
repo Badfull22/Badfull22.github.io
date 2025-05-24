@@ -120,17 +120,17 @@ body {
   text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
 }
 
-.id-refresh {
-  background: none;
-  border: none;
+.id-display-form {
+  font-family: "Orbitron", monospace;
+  font-weight: 700;
   color: var(--primary-color);
-  cursor: pointer;
-  font-size: 1rem;
-  transition: transform 0.3s ease;
-}
-
-.id-refresh:hover {
-  transform: rotate(180deg);
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+  background: rgba(255, 107, 53, 0.1);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  text-align: center;
+  font-size: 1.1rem;
 }
 
 .hamburger {
@@ -641,9 +641,43 @@ body {
   letter-spacing: 1px;
 }
 
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
 .submit-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+}
+
+.loading {
+  position: relative;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  border: 2px solid transparent;
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 /* Sección Tienda */

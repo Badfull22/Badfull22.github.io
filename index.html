@@ -27,8 +27,7 @@
                 <li class="nav-item">
                     <div class="id-generator">
                         <span class="id-label">TU ID:</span>
-                        <span class="id-display" id="user-id">ABCDE-12345</span>
-                        <button class="id-refresh" onclick="generateNewId()">🔄</button>
+                        <span class="id-display" id="user-id">CARGANDO...</span>
                     </div>
                 </li>
             </ul>
@@ -118,6 +117,7 @@
                 <button class="close-btn" onclick="toggleForm()">×</button>
                 <h3 class="form-title">ÚNETE A L.P.D.F</h3>
                 <form class="crew-form" id="crew-form">
+                    <input type="hidden" id="user-id-hidden" name="user_id">
                     <div class="form-group">
                         <label for="nombre">Nombre Completo</label>
                         <input type="text" id="nombre" name="nombre" required>
@@ -130,7 +130,11 @@
                         <label for="habilidad">Tu Habilidad en Graffiti</label>
                         <textarea id="habilidad" name="habilidad" placeholder="Describe qué aportas o sabes hacer..." required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">ENVIAR SOLICITUD</button>
+                    <div class="form-group">
+                        <label>Tu ID Único:</label>
+                        <div class="id-display-form" id="form-user-id">CARGANDO...</div>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submit-btn">ENVIAR SOLICITUD</button>
                 </form>
             </div>
         </div>
