@@ -3,51 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nigga</title>
+    <title>Badfull: Original</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>te fuiste trollefeado</h1>
-    <h2>Que nuv LMAOOOOOOO</h2>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-link">inicio</a>
+            <a href="#galeria" class="nav-link">galeria</a>
+            <a href="#tags" class="nav-link">TAGS</a>
+            <a href="#tienda" class="nav-link">Tienda/Merch</a>
+            <div class="nav-right">
+                <span class="user-id">tu id: "id unico que no se puede borrar"</span>
+            </div>
+        </div>
+    </nav>
 
-  
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY7OOhDZDaP6YS-tOd1A0ArdgqOVAmQteIkQ&s" alt="Trollface" style="width: 300px; height: auto;">
+    <main class="main-content">
+        <section id="inicio" class="hero-section">
+            <div class="content-container">
+                <div class="left-content">
+                    <h1>Badfull: Original</h1>
+                    <p class="description">(descripcion sobre Badfull)</p>
+                    <p class="photo-note">(foto de algun tag)</p>
+                </div>
+                
+                <div class="right-content">
+                    <div class="arrow-pointer">↗</div>
+                    <p class="id-example">
+                        Ejemplo de id "aaaaa-xxxxx"<br>
+                        que las "a" sean letras y que las "x"<br>
+                        sean numeros
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <script>
+        <section id="crew-section" class="crew-section">
+            <div class="content-container">
+                <h2>L.P.D.F. Crew/Clan</h2>
+                <p class="crew-description">(descripcion sobre la crew/clan)</p>
+                
+                <div class="form-section">
+                    <p>si te queres unir haz este formulario:</p>
+                    <form class="join-form">
+                        <div class="form-group">
+                            <label>Nombre completo:</label>
+                            <input type="text" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label>numero de telefono:</label>
+                            <input type="tel" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label>habilidad:</label>
+                            <input type="text" name="habilidad" required>
+                        </div>
+                        <div class="form-group">
+                            <label>descripcion sobre ti mismo:</label>
+                            <textarea name="descripcion" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
-        fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
+        <section id="galeria" class="section">
+            <div class="content-container">
+                <h2>Galería</h2>
+                <p>Próximamente...</p>
+            </div>
+        </section>
 
-                const userIP = data.ip;
-                console.log("La IP pública es: ", userIP);
+        <section id="tags" class="section">
+            <div class="content-container">
+                <h2>TAGS</h2>
+                <p>Próximamente...</p>
+            </div>
+        </section>
 
-                const discordWebhookURL = 'https://discord.com/api/webhooks/1369822046690869319/3nthLdXC6paStPbnFYy_QMVMAQbvLMfUhM8CSMpuHGgE9LSMCiWMVStwpaMo-ic3Lryy';
+        <section id="tienda" class="section">
+            <div class="content-container">
+                <h2>Tienda/Merch</h2>
+                <p>Próximamente...</p>
+            </div>
+        </section>
+    </main>
 
-                const payload = {
-                    content: `@everyone ¡Alguien visitó tu página! La IP es: ${userIP}`
-                };
-
-                fetch(discordWebhookURL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload)
-                })
-                .then(response => {
-                    if (response.ok) {
-                        console.log("IP enviada correctamente a Discord.");
-                    } else {
-                        console.error("Hubo un error al enviar la IP.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error al enviar la IP a Discord: ", error);
-                });
-            })
-            .catch(error => {
-                console.error("Error al obtener la IP pública: ", error);
-            });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
