@@ -5,65 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Badfull: Original</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#inicio" class="nav-link">inicio</a>
-            <a href="#galeria" class="nav-link">galeria</a>
-            <a href="#tags" class="nav-link">TAGS</a>
-            <a href="#tienda" class="nav-link">Tienda/Merch</a>
+            <div class="nav-left">
+                <a href="#inicio" class="nav-link">inicio</a>
+                <a href="#galeria" class="nav-link">galería</a>
+                <a href="#tags" class="nav-link">TAGS</a>
+                <a href="#tienda" class="nav-link">Tienda/Merch</a>
+            </div>
             <div class="nav-right">
-                <span class="user-id">tu id: "id unico que no se puede borrar"</span>
+                <div class="user-id-container">
+                    <span class="user-id-label">tu id:</span>
+                    <span class="user-id-value" id="userIdDisplay">aaaaa-xxxxx</span>
+                    <button class="generate-id-btn" id="generateIdBtn">🎲</button>
+                </div>
             </div>
         </div>
     </nav>
 
     <main class="main-content">
         <section id="inicio" class="hero-section">
+            <div class="hero-background"></div>
             <div class="content-container">
                 <div class="left-content">
-                    <h1>Badfull: Original</h1>
-                    <p class="description">(descripcion sobre Badfull)</p>
-                    <p class="photo-note">(foto de algun tag)</p>
+                    <h1 class="hero-title">
+                        <span class="title-main">Badfull:</span>
+                        <span class="title-accent">Original</span>
+                    </h1>
+                    <p class="description">Descripción sobre Badfull</p>
+                    <p class="photo-note">Foto de algún tag</p>
+                    <div class="hero-image-placeholder">
+                        <div class="image-icon">🎨</div>
+                        <span>Imagen del tag</span>
+                    </div>
                 </div>
                 
                 <div class="right-content">
-                    <div class="arrow-pointer">↗</div>
-                    <p class="id-example">
-                        Ejemplo de id "aaaaa-xxxxx"<br>
-                        que las "a" sean letras y que las "x"<br>
-                        sean numeros
-                    </p>
+                    <div class="id-card">
+                        <div class="arrow-pointer">↗</div>
+                        <div class="id-explanation">
+                            <h3>Formato de ID</h3>
+                            <div class="id-example">
+                                <span class="id-part letters">aaaaa</span>
+                                <span class="id-separator">-</span>
+                                <span class="id-part numbers">xxxxx</span>
+                            </div>
+                            <p class="id-description">
+                                Las <span class="highlight-letters">"a"</span> son letras y las <span class="highlight-numbers">"x"</span> son números
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="crew-section" class="crew-section">
             <div class="content-container">
-                <h2>L.P.D.F. Crew/Clan</h2>
-                <p class="crew-description">(descripcion sobre la crew/clan)</p>
+                <div class="section-header">
+                    <h2>L.P.D.F. Crew/Clan</h2>
+                    <p class="crew-description">Descripción sobre la crew/clan</p>
+                </div>
                 
-                <div class="form-section">
-                    <p>si te queres unir haz este formulario:</p>
+                <div class="form-container">
+                    <div class="form-header">
+                        <h3>¿Quieres unirte?</h3>
+                        <p>Completa este formulario:</p>
+                    </div>
+                    
                     <form class="join-form">
-                        <div class="form-group">
-                            <label>Nombre completo:</label>
-                            <input type="text" name="nombre" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nombre completo</label>
+                                <input type="text" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Número de teléfono</label>
+                                <input type="tel" name="telefono" required>
+                            </div>
                         </div>
+                        
                         <div class="form-group">
-                            <label>numero de telefono:</label>
-                            <input type="tel" name="telefono" required>
+                            <label>Habilidad principal</label>
+                            <input type="text" name="habilidad" placeholder="Ej: Graffiti, Diseño, Fotografía..." required>
                         </div>
+                        
                         <div class="form-group">
-                            <label>habilidad:</label>
-                            <input type="text" name="habilidad" required>
+                            <label>Descripción sobre ti</label>
+                            <textarea name="descripcion" rows="4" placeholder="Cuéntanos sobre tu experiencia y por qué quieres unirte..." required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label>descripcion sobre ti mismo:</label>
-                            <textarea name="descripcion" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Enviar</button>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Enviar solicitud</span>
+                            <div class="btn-shine"></div>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -72,24 +109,39 @@
         <section id="galeria" class="section">
             <div class="content-container">
                 <h2>Galería</h2>
-                <p>Próximamente...</p>
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">🖼️</div>
+                    <p>Próximamente...</p>
+                </div>
             </div>
         </section>
 
         <section id="tags" class="section">
             <div class="content-container">
                 <h2>TAGS</h2>
-                <p>Próximamente...</p>
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">🏷️</div>
+                    <p>Próximamente...</p>
+                </div>
             </div>
         </section>
 
         <section id="tienda" class="section">
             <div class="content-container">
                 <h2>Tienda/Merch</h2>
-                <p>Próximamente...</p>
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">🛍️</div>
+                    <p>Próximamente...</p>
+                </div>
             </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <div class="content-container">
+            <p>&copy; 2024 Badfull: Original. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
